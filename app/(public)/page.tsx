@@ -1,103 +1,112 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
-    <main>
-      <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-6xl px-4 py-14">
-          <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] md:items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
-                <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                Historic League in Connecticut
+    <main className="min-h-screen">
+      <header className="container-page pt-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="h-11 w-11 overflow-hidden rounded-xl border border-white/10 bg-white/5">
+              <Image src="/ccl-logo.png" alt="CCL" width={44} height={44} />
+            </div>
+            <div className="leading-tight">
+              <div className="text-sm font-semibold">Connecticut Cricket League</div>
+              <div className="text-xs text-white/60">Official website</div>
+            </div>
+          </div>
+
+          <nav className="hidden md:flex items-center gap-6 text-sm text-white/70">
+            <Link className="hover:text-white" href="/match-center">Match Center</Link>
+            <Link className="hover:text-white" href="/schedule">Schedule</Link>
+            <Link className="hover:text-white" href="/points">Points</Link>
+            <Link className="hover:text-white" href="/about">About</Link>
+          </nav>
+        </div>
+      </header>
+
+      <section className="container-page pt-10 pb-10">
+        <div className="grid gap-8 md:grid-cols-[1.2fr_0.8fr] items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+              Historic League in Connecticut
+            </div>
+
+            <h1 className="mt-5 text-4xl md:text-6xl font-bold tracking-tight">
+              Connecticut Cricket League
+            </h1>
+
+            <p className="mt-4 text-base md:text-lg text-white/70 max-w-xl leading-relaxed">
+              Competitive cricket, community, and season updates. View match center, schedules, points,
+              and league announcements.
+            </p>
+
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link className="btn btn-primary" href="/match-center">Open Match Center</Link>
+              <Link className="btn btn-secondary" href="/about">About CCL</Link>
+            </div>
+          </div>
+
+          <div className="card p-6">
+            <div className="flex items-center gap-3">
+              <div className="h-12 w-12 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+                <Image src="/ccl-logo.png" alt="CCL" width={48} height={48} />
               </div>
-              <h1 className="mt-4 text-4xl font-bold tracking-tight md:text-5xl">Connecticut Cricket League</h1>
-              <p className="mt-3 max-w-prose text-base text-white/75">
-                CCL is one of Connecticut’s long-running cricket leagues, bringing competitive cricket and community together season after season.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href="/match-center"
-                  className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-black hover:opacity-90"
-                >
-                  Open Match Center
-                </Link>
-                <Link
-                  href="/about"
-                  className="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10"
-                >
-                  About CCL
-                </Link>
+              <div>
+                <div className="text-xs text-white/60">Match formats</div>
+                <div className="text-base font-semibold">Leather Ball and Hard Tennis Ball</div>
+                <div className="text-sm text-white/60">CCL • TCL</div>
               </div>
             </div>
 
-            <div className="relative">
-              <div className="absolute -inset-6 rounded-[32px] bg-gradient-to-tr from-cyan-500/20 via-transparent to-pink-500/20 blur-2xl" />
-              <div className="relative rounded-[32px] border border-white/10 bg-black/25 p-7 shadow-soft">
-                <div className="flex items-center gap-4">
-                  <Image
-                    src="/images/ccl-logo.jpg"
-                    alt="Connecticut Cricket League logo"
-                    width={120}
-                    height={120}
-                    className="rounded-2xl bg-white p-2"
-                    priority
-                  />
-                  <div>
-                    <p className="text-sm text-white/70">Match formats</p>
-                    <p className="mt-1 text-lg font-semibold">Leather Ball and Hard Tennis Ball (CCL - TCL)</p>
-                  </div>
-                </div>
+            <div className="mt-6 space-y-3">
+              <Link href="/match-center?format=leather" className="block rounded-2xl border border-white/10 bg-black/20 p-4 hover:bg-black/30 transition">
+                <div className="font-semibold">Leather Ball</div>
+                <div className="text-sm text-white/60">Live matches and schedule</div>
+              </Link>
 
-                <div className="mt-6 grid gap-3">
-                  <Link
-                    href="/leatherball"
-                    className="rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10"
-                  >
-                    <p className="text-sm font-semibold">Leather Ball</p>
-                    <p className="mt-1 text-xs text-white/70">Live matches and schedule</p>
-                  </Link>
-                  <Link
-                    href="/tcl"
-                    className="rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10"
-                  >
-                    <p className="text-sm font-semibold">CCL - TCL</p>
-                    <p className="mt-1 text-xs text-white/70">Live games and schedule</p>
-                  </Link>
-                </div>
-              </div>
+              <Link href="/match-center?format=tcl" className="block rounded-2xl border border-white/10 bg-black/20 p-4 hover:bg-black/30 transition">
+                <div className="font-semibold">CCL - TCL</div>
+                <div className="text-sm text-white/60">Live games and schedule</div>
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-16">
-        <div className="grid gap-6 md:grid-cols-3">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h2 className="text-sm font-semibold">Latest Updates</h2>
-            <p className="mt-2 text-sm text-white/70">
-              Admin announcements will appear here. For now, this section is ready.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h2 className="text-sm font-semibold">Quick Links</h2>
-            <div className="mt-3 grid gap-2 text-sm">
-              <Link className="text-white/80 hover:text-white" href="/teams">Teams</Link>
-              <Link className="text-white/80 hover:text-white" href="/points-table">Points Table</Link>
-              <Link className="text-white/80 hover:text-white" href="/gallery">Gallery</Link>
+      <section className="container-page pb-14">
+        <div className="grid gap-4 md:grid-cols-3">
+          <div className="card p-6">
+            <div className="text-sm font-semibold">Latest Updates</div>
+            <div className="mt-2 text-sm text-white/60">
+              Add announcements here (or connect to CricClubs feed later).
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <h2 className="text-sm font-semibold">Powered by CricClubs</h2>
-            <p className="mt-2 text-sm text-white/70">
-              Live scoring and schedules are tracked on CricClubs for registered league competitions.
-            </p>
+          <div className="card p-6">
+            <div className="text-sm font-semibold">Quick Links</div>
+            <div className="mt-3 grid gap-2 text-sm text-white/70">
+              <Link className="hover:text-white" href="/schedule">Schedule</Link>
+              <Link className="hover:text-white" href="/points">Points Table</Link>
+              <Link className="hover:text-white" href="/teams">Teams</Link>
+            </div>
+          </div>
+
+          <div className="card p-6">
+            <div className="text-sm font-semibold">Powered by CricClubs</div>
+            <div className="mt-2 text-sm text-white/60">
+              Match data and fixtures are maintained via CricClubs.
+            </div>
           </div>
         </div>
       </section>
+
+      <footer className="border-t border-white/10">
+        <div className="container-page py-8 text-sm text-white/60">
+          © {new Date().getFullYear()} Connecticut Cricket League. All rights reserved.
+        </div>
+      </footer>
     </main>
   );
 }
